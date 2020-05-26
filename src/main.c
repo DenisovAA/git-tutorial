@@ -60,6 +60,12 @@ typedef struct {
   int tick;
 } arguments_t;
 
+int err_abort(int status, char *message) {
+  fprintf(stderr, "%s\n", message);
+  exit(status);
+  return 0;
+}
+
 void errno_abort(char *message) {
   perror(message);
   exit(EXIT_FAILURE);
@@ -215,10 +221,4 @@ int main(int argc, char **argv) {
 
   return 0;
 
-}
-
-int err_abort(int status, char *message) {
-  fprintf(stderr, "%s\n", message);
-  exit(status);
-  return 0;
 }
